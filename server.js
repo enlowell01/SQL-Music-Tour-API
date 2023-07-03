@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 const { Sequelize } = require('sequelize')
+const bands = require('./controllers/bands_controller')
 
 
 // CONFIGURATION / MIDDLEWARE
@@ -19,14 +20,14 @@ app.get('/', (req, res) => {
 })
 
 // CONTROLLERS  
-const bandsControllers = require('./controllers/bands_controllers')
-app.use('/bands', bandsControllers)
+const bandsController = require('./controllers/bands_controller')
+app.use('/bands', bandsController)
 
-const eventsControllers = require('./controllers/events_controllers')
-app.use('/events', eventsControllers)
+const eventsController = require('./controllers/events_controller')
+app.use('/events', eventsController)
 
-const stagesControllers = require('./controllers/stages_controllers')
-app.use('/stages', stagesControllers)
+const stagesController = require('./controllers/stages_controller')
+app.use('/stages', stagesController)
 
 // LISTEN
 app.listen(process.env.PORT, () => {
